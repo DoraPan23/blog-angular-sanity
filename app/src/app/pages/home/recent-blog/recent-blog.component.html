@@ -1,15 +1,15 @@
 <div class="flex flex-col gap-8">
     <h3 class="text-black font-inter text-[24px] font-semibold leading-8">Recent blog posts</h3>
     <div class="grid grid-cols-2 grid-rows-3 gap-8">
-        <ng-container *ngFor="let item of [].constructor(4); first as first; last as last">
+        <ng-container *ngFor="let blog of data; first as first; last as last">
             <div *ngIf="first" class="row-span-2">
-                <app-blog-card [first]="true"></app-blog-card>
+                <app-blog-card [first]="true" [blog]="blog" [width]="592" [height]="228"></app-blog-card>
             </div>
             <div *ngIf="last" class="col-span-2">
-                <app-blog-card [last]="true"></app-blog-card>
+                <app-blog-card [last]="true" [blog]="blog" [width]="592" [height]="246"></app-blog-card>
             </div>
             <div *ngIf="!first && !last">
-                <app-blog-card></app-blog-card>
+                <app-blog-card [blog]="blog" [width]="320" [height]="200"></app-blog-card>
             </div>
         </ng-container>
     </div>

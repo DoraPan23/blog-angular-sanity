@@ -35,7 +35,13 @@ export class SanityService {
 
   async getAllPosts(): Promise<Post[]> {
     return await this.sanityClient().fetch(
-      '*[_type == "post" && defined(slug.current)]|order(_createdAt desc)'
+      `*[_type == "post"]{
+        ...,
+        "author": author->{name}.name,
+        "categories": categories[]->{title}.title,
+        "slug": slug.current,
+      }
+      |order(_createdAt desc)`
     );
   }
   async getPost(slug: string): Promise<Post> {
