@@ -14,6 +14,8 @@ module.exports = {
       colors: {
         date: "#6941C6",
         description: "#667085",
+        darkTheme: "#090D1F",
+        lightTheme: "#FFF",
       },
     },
   },

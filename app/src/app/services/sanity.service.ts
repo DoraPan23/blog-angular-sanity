@@ -1,16 +1,16 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { createClient, ClientConfig, SanityClient } from '@sanity/client';
-import imageUrlBuilder from '@sanity/image-url';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { createClient, ClientConfig, SanityClient } from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
 
-import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
-import { environment } from 'src/environments/environment';
-import { Post } from 'src/types';
+import { environment } from "src/environments/environment";
+import { Post } from "src/types";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class SanityService {
   private client: SanityClient;
@@ -48,6 +48,15 @@ export class SanityService {
     return await this.sanityClient().fetch(
       '*[_type == "post" && slug.current == $slug][0]',
       { slug }
+    );
+  }
+
+  async getAllAuthors(): Promise<any> {
+    return await this.sanityClient().fetch(
+      `*[_type == "author"]{
+        ...
+      }
+      | order(_createdAt desc)`
     );
   }
 }
