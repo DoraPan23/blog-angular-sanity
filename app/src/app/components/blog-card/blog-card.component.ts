@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { Post } from "src/types";
+import { Blog } from "src/types";
 
 @Component({
   selector: "app-blog-card",
@@ -10,7 +10,7 @@ export class BlogCardComponent {
   @Input() last: boolean = false;
   @Input() width: number = 384;
   @Input() height: number = 240;
-  @Input() blog: Post = {
+  @Input() blog: Blog = {
     _id: "",
     author: "",
     categories: [],

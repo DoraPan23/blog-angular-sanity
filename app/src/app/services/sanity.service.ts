@@ -7,7 +7,7 @@ import { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 import { environment } from "src/environments/environment";
-import { Post } from "src/types";
+import { Blog } from "src/types";
 
 @Injectable({
   providedIn: "root",
@@ -33,7 +33,7 @@ export class SanityService {
     return this.imageUrlBuilder.image(source);
   }
 
-  async getAllPosts(): Promise<Post[]> {
+  async getAllBlogs(): Promise<Blog[]> {
     return await this.sanityClient().fetch(
       `*[_type == "post"]{
         ...,
@@ -44,10 +44,17 @@ export class SanityService {
       |order(_createdAt desc)`
     );
   }
-  async getPost(slug: string): Promise<Post> {
+  async getBlogBySlug(slug: string): Promise<Blog> {
     return await this.sanityClient().fetch(
-      '*[_type == "post" && slug.current == $slug][0]',
-      { slug }
+      `*[_type == "post" && slug.current == $slug][0]{
+        ...,
+        "author": author->{name}.name,
+        "categories": categories[]->{title}.title,
+        "slug": slug.current,
+        "test": author->{_id}._id,
+        "image": *[_type=='author' && _id == author->{_id}._id ][0]{ image }.image
+
+      }`, { slug } // chưa get được hình ảnh của tác giả
     );
   }
 
@@ -57,6 +64,19 @@ export class SanityService {
         ...
       }
       | order(_createdAt desc)`
+    );
+  }
+
+  async getBlogsByAuthorId(authorId: string): Promise<any> {
+    return await this.sanityClient().fetch(
+      `*[_type == "post" && author._ref == $authorId]{
+        ...,
+        "author": author->{name}.name,
+        "categories": categories[]->{title}.title,
+        "slug": slug.current,
+        "image": *[_type=='author' && _id == $authorId ][0]{ image }.image
+      }
+      | order(_createdAt desc)`, { authorId: authorId }
     );
   }
 }

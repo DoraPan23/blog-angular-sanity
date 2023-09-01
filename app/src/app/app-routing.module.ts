@@ -1,16 +1,16 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./pages/home/home.component";
-import { PostComponent } from "./post/post.component";
 import { AuthorComponent } from "./pages/author/author.component";
 import { AuthorDetailComponent } from "./pages/author/author-detail/author-detail.component";
+import { BlogDetailComponent } from "./pages/home/blog-detail/blog-detail.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
   { path: "blog", component: HomeComponent, pathMatch: "full" },
   {
     path: "blog/:slug",
-    component: PostComponent,
+    component: BlogDetailComponent,
     pathMatch: "full",
   },
   { path: "authors", component: AuthorComponent, pathMatch: "full" },
@@ -32,4 +32,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,7 +1,7 @@
 import { PortableTextBlock } from '@portabletext/types';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
-export interface Post {
+export interface Blog {
   _id: string;
   title: string;
   categories: string[];

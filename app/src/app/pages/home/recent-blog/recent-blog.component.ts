@@ -1,10 +1,10 @@
 import { Component, Input } from "@angular/core";
-import { Post } from "src/types";
+import { Blog } from "src/types";
 
 @Component({
   selector: "app-recent-blog",
   templateUrl: "./recent-blog.component.html",
 })
 export class RecentBlogComponent {
-  @Input() data: Post[] = [];
+  @Input() data: Blog[] = [];
 }

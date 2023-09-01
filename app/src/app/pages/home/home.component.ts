@@ -1,15 +1,15 @@
 import { SanityService } from "../../services/sanity.service";
 import { Component, OnInit } from "@angular/core";
 import { from, skip, switchMap, take, tap, toArray } from "rxjs";
-import { Post } from "src/types";
+import { Blog } from "src/types";
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
 })
 export class HomeComponent implements OnInit {
-  recentBlogs: Post[] = [];
-  allBlogs: Post[] = [];
+  recentBlogs: Blog[] = [];
+  allBlogs: Blog[] = [];
 
   constructor(private sanityService: SanityService) { }
   async ngOnInit(): Promise<void> {
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  async getAllPosts(): Promise<Post[]> {
-    return await this.sanityService.getAllPosts();
+  async getAllPosts(): Promise<Blog[]> {
+    return await this.sanityService.getAllBlogs();
   }
 }

@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./pages/home/home.component";
-import { PostComponent } from "./post/post.component";
 import { HttpClientModule } from "@angular/common/http";
 import { PortableTextToHTML } from "./pipes/portable-text.pipe";
 import { SanityImagePipe } from "./pipes/sanity-image.pipe";
@@ -16,12 +15,12 @@ import { FooterComponent } from "./footer/footer.component";
 import { AuthorComponent } from "./pages/author/author.component";
 import { AuthorCardComponent } from "./components/author-card/author-card.component";
 import { AuthorDetailComponent } from "./pages/author/author-detail/author-detail.component";
+import { BlogDetailComponent } from "./pages/home/blog-detail/blog-detail.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PostComponent,
     SanityImagePipe,
     PortableTextToHTML,
     NavbarComponent,
@@ -32,9 +31,10 @@ import { AuthorDetailComponent } from "./pages/author/author-detail/author-detai
     AuthorComponent,
     AuthorCardComponent,
     AuthorDetailComponent,
+    BlogDetailComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [SanityImagePipe, PortableTextToHTML],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
