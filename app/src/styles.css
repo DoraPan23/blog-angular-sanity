@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --theme-background-selected: #fff;
+  --theme-background-unselected: #090d1f;
+  --theme-color-selected: #090d1f;
+  --theme-color-unselected: #fff;
+}

@@ -1,9 +1,12 @@
-<div class="flex justify-center border-y border-[#090D1F]">
-  <h1 class="text-black font-inter text-[244px] font-bold">THE BLOG</h1>
+<div class="flex justify-center border-y border-primary">
+  <h1 class="text-primary font-inter text-[244px] font-bold">THE BLOG</h1>
 </div>
 <div class="mt-7">
   <app-recent-blog [data]="recentBlogs"></app-recent-blog>
 </div>
-<div class="mt-7">
-  <app-all-blog [data]="allBlogs"></app-all-blog>
+<div class="mt-7 border-b">
+  <app-all-blog [data]="showBlogsByItemPerPage"></app-all-blog>
+</div>
+<div class="mt-5">
+  <app-paging [pageNumber]="pageNumber" (currentPage)="handlePageChanged($event)"></app-paging>
 </div>

@@ -1,10 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
-import { PortableTextComponents, toHTML } from '@portabletext/to-html';
-import { PortableTextBlock } from '@portabletext/types';
-import { SanityImagePipe } from './sanity-image.pipe';
+import { PortableTextComponents, toHTML } from "@portabletext/to-html";
+import { PortableTextBlock } from "@portabletext/types";
+import { SanityImagePipe } from "./sanity-image.pipe";
 
-@Pipe({ name: 'portableTextToHTML' })
+@Pipe({ name: "portableTextToHTML" })
 export class PortableTextToHTML implements PipeTransform {
   constructor(private sanityImagePipe: SanityImagePipe) {}
 
@@ -12,6 +12,10 @@ export class PortableTextToHTML implements PipeTransform {
     types: {
       image: ({ value }: { value: string }) =>
         '<img src="' + this.sanityImagePipe.transform(value, 900) + '" />',
+    },
+    block: {
+      normal: ({ children }) =>
+        "<span class='text-primary'>" + children + "</span>",
     },
   };
   transform(value: PortableTextBlock[]): string {

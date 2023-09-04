@@ -37,7 +37,7 @@ export class SanityService {
     return await this.sanityClient().fetch(
       `*[_type == "post"]{
         ...,
-        "author": author->{name}.name,
+        "author": author->{name,_id},
         "categories": categories[]->{title}.title,
         "slug": slug.current,
       }
@@ -48,13 +48,13 @@ export class SanityService {
     return await this.sanityClient().fetch(
       `*[_type == "post" && slug.current == $slug][0]{
         ...,
-        "author": author->{name}.name,
+        "author": author->{name,_id},
         "categories": categories[]->{title}.title,
         "slug": slug.current,
-        "test": author->{_id}._id,
         "image": *[_type=='author' && _id == author->{_id}._id ][0]{ image }.image
 
-      }`, { slug } // chưa get được hình ảnh của tác giả
+      }`,
+      { slug } // chưa get được hình ảnh của tác giả
     );
   }
 
@@ -71,12 +71,26 @@ export class SanityService {
     return await this.sanityClient().fetch(
       `*[_type == "post" && author._ref == $authorId]{
         ...,
-        "author": author->{name}.name,
+        "author": author->{name,_id},
         "categories": categories[]->{title}.title,
         "slug": slug.current,
         "image": *[_type=='author' && _id == $authorId ][0]{ image }.image
       }
-      | order(_createdAt desc)`, { authorId: authorId }
+      | order(_createdAt desc)`,
+      { authorId: authorId }
+    );
+  }
+
+  async getBlogsByTag(tag: string): Promise<any> {
+    return await this.sanityClient().fetch(
+      `*[_type == "post" && $tag in categories[]->{title}.title ]{
+        ...,
+        "author": author->{name,_id},
+        "categories": categories[]->{title}.title,
+        "slug": slug.current
+      }
+      | order(_createdAt desc)`,
+      { tag }
     );
   }
 }

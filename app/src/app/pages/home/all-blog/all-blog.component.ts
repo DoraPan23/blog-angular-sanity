@@ -6,5 +6,6 @@ import { Blog } from "src/types";
   templateUrl: "./all-blog.component.html",
 })
 export class AllBlogComponent {
-  @Input() data: Blog[] = []
+  @Input() data: Blog[] = [];
+  @Input() tag: string = "";
 }

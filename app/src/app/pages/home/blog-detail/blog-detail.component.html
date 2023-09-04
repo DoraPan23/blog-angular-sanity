@@ -1,21 +1,18 @@
-<!-- <article class="post">
-  <img
-    *ngIf="post.mainImage"
-    class="post__cover"
-    [src]="post.mainImage | sanityImage : 1920"
-    alt="Cover image"
-    width="100%"
-  />
-  <div *ngIf="!post.mainImage" class="post__cover--none"></div>
-
-  <div class="post__container">
-    <h1 class="post__title">{{ post.title }}</h1>
-    <p class="post__excerpt">{{ post.excerpt }}</p>
-    <p class="post__date"></p>
-    <div
-      *ngIf="post.body"
-      class="post__content"
-      [innerHTML]="post.body | portableTextToHTML"
-    ></div>
+<div *ngIf="blog" class="flex flex-col items-center gap-8 px-80 mb-8">
+  <a class="text-date self-start font-inter text-[14px] font-semibold leading-5 cursor-pointer"
+    (click)="navigateToAuthor(blog.author)">
+    {{blog.author.name + " • " + (blog.publishedAt | date: "fullDate")}}
+  </a>
+  <h3 class="font-inter text-[36px] text-primary font-bold leading-8">{{blog.title}}</h3>
+  <img *ngIf="blog.mainImage" [src]="blog.mainImage | sanityImage" alt="">
+  <div *ngIf="blog.body" class="flex flex-col" [innerHTML]="blog.body | portableTextToHTML"></div>
+  <div class="flex gap-2">
+    <ng-container *ngFor="let tag of blog.categories">
+      <div class="flex py-[2px] px-[10px] rounded bg-tag cursor-pointer" [routerLink]="'/tag/' + tag">
+        <p class="text-date font-inter text-[14px] font-medium leading-5 hover:text-orange-500 ease-in duration-500">
+          {{tag}}</p>
+      </div>
+    </ng-container>
   </div>
-</article> -->
+</div>
+<app-newsletter-card></app-newsletter-card>

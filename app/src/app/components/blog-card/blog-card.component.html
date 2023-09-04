@@ -1,9 +1,11 @@
-<div class="flex" [class]="first ? 'flex-col' : 'flex-row gap-6'">
+<div *ngIf="blog" class="flex" [class]="first ? 'flex-col' : 'flex-row gap-6'">
     <img *ngIf="blog.mainImage" [src]="blog.mainImage | sanityImage:width" alt="">
     <div class="flex flex-col">
-        <a class="text-date mb-3" [routerLink]="'/author/' + (blog.author | lowercase)">
-            {{blog.author + " • " + (blog.publishedAt | date: "fullDate")}}</a>
-        <a class="font-inter text-[24px] font-semibold leading-8 text-black mb-3" [routerLink]="'/blog/' + blog.slug">
+        <a class="text-date mb-3 cursor-pointer hover:text-orange-500 ease-in duration-500"
+            (click)="navigateToAuthor(blog.author)">
+            {{blog.author.name + " • " + (blog.publishedAt | date: "fullDate")}}</a>
+        <a class="text-primary font-inter text-[24px] font-semibold leading-8 mb-3 hover:text-orange-500 ease-in duration-500"
+            [routerLink]="'/blog/' + blog.slug">
             {{blog.title}}
         </a>
         <p class="font-inter text-[16px] font-normal leading-7 text-description mb-6">
@@ -11,8 +13,11 @@
         </p>
         <div class="flex gap-2">
             <ng-container *ngFor="let tag of blog.categories">
-                <div class="flex justify-center py-[2px] px-[10px] rounded bg-tag">
-                    <p class="text-date font-inter text-[14px] font-medium leading-5">{{tag}}</p>
+                <div class="flex py-[2px] px-[10px] rounded bg-tag cursor-pointer">
+                    <p class="text-date font-inter text-[14px] font-medium leading-5 hover:text-orange-500 ease-in duration-500"
+                        (click)="navigateToTag(tag)">
+                        {{tag}}
+                    </p>
                 </div>
             </ng-container>
         </div>

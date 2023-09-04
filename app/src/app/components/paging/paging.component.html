@@ -1,0 +1,38 @@
+<div class="flex justify-between items-center">
+    <div class="flex justify-between cursor-pointer" [style.visibility]="selectedPage == 0 ? 'hidden' : ''"
+        (click)="onPageChanged(selectedPage - 1)">
+        <svg width="20" height="21" viewBox="0 0 20 21" fill="black" xmlns="http://www.w3.org/2000/svg">
+            <g id="arrow-left">
+                <path id="Icon" d="M15.8334 10.4998H4.16669M4.16669 10.4998L10 16.3332M4.16669 10.4998L10 4.6665"
+                    stroke="orange" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+        </svg>
+        <p class="font-inter text-[14px] font-medium leading-5 text-primary">Previous</p>
+    </div>
+    <div class="flex">
+        <ng-container *ngFor="let item of [].constructor(pageNumber); index as i; first as first; last as last">
+            <div *ngIf="first || last || (i >= selectedPage - 1 && i <= selectedPage + 1)"
+                class="w-[48px] h-[48px] p-3 bg-primary rounded-lg text-primary text-center cursor-pointer"
+                [class]="i==selectedPage ? 'border border-primary bg-primary text-primary' : ''"
+                (click)="onPageChanged(i)">
+                {{i + 1}}
+            </div>
+            <!-- <ng-template #SHOW_CONTINUE>
+                <div class="w-[48px] h-[48px] p-3 bg-darkTheme rounded-lg text-lightTheme text-center">
+                    ...
+                </div>
+            </ng-template> -->
+        </ng-container>
+    </div>
+    <div class="flex justify-between cursor-pointer" [style.visibility]="selectedPage + 1 == pageNumber ? 'hidden' : ''"
+        (click)="onPageChanged(selectedPage + 1)">
+        <p class="font-inter text-[14px] font-medium leading-5 text-primary">Next</p>
+        <svg class="rotate-180" width="20" height="21" viewBox="0 0 20 21" style="fill: green"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="arrow-left">
+                <path id="Icon" d="M15.8334 10.4998H4.16669M4.16669 10.4998L10 16.3332M4.16669 10.4998L10 4.6665"
+                    stroke="orange" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+        </svg>
+    </div>
+</div>

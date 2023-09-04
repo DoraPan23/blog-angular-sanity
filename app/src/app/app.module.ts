@@ -16,6 +16,10 @@ import { AuthorComponent } from "./pages/author/author.component";
 import { AuthorCardComponent } from "./components/author-card/author-card.component";
 import { AuthorDetailComponent } from "./pages/author/author-detail/author-detail.component";
 import { BlogDetailComponent } from "./pages/home/blog-detail/blog-detail.component";
+import { PagingComponent } from './components/paging/paging.component';
+import { TagComponent } from './pages/tag/tag.component';
+import { NewsletterComponent } from './pages/newsletter/newsletter.component';
+import { NewsletterCardComponent } from './components/newsletter-card/newsletter-card.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { BlogDetailComponent } from "./pages/home/blog-detail/blog-detail.compon
     AuthorComponent,
     AuthorCardComponent,
     AuthorDetailComponent,
-    BlogDetailComponent
+    BlogDetailComponent,
+    PagingComponent,
+    TagComponent,
+    NewsletterComponent,
+    NewsletterCardComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [SanityImagePipe, PortableTextToHTML],
