@@ -10,11 +10,7 @@ import { NewsletterComponent } from "./pages/newsletter/newsletter.component";
 const routes: Routes = [
   { path: "", component: HomeComponent, pathMatch: "full" },
   { path: "blogs", component: HomeComponent, pathMatch: "full" },
-  {
-    path: "blog/:slug",
-    component: BlogDetailComponent,
-    pathMatch: "full",
-  },
+  { path: "blog/:slug", component: BlogDetailComponent, pathMatch: "full" },
   { path: "authors", component: AuthorComponent, pathMatch: "full" },
   { path: "author/:slug", component: AuthorDetailComponent, pathMatch: "full" },
   { path: "tag/:tag", component: TagComponent, pathMatch: "full" },

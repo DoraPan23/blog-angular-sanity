@@ -14,7 +14,6 @@ export class AuthorComponent implements OnInit {
   ngOnInit(): void {
     const observable = from(this.getListAuthors());
     observable.pipe(take(1)).subscribe((data) => {
-      console.log(data);
       this.listAuthor = data;
     });
   }

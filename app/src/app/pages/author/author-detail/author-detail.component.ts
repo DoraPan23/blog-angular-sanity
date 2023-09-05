@@ -23,7 +23,6 @@ export class AuthorDetailComponent implements OnInit {
   ngOnInit(): void {
     const observable = from(this.getBlogsByAuthorId());
     observable.subscribe((data) => {
-      console.log("by Id author", data);
       this.listBlogsByAuthor = data;
       this.author = this.listBlogsByAuthor[0];
     });

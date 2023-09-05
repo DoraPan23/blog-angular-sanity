@@ -10,7 +10,6 @@ export class PagingComponent {
   selectedPage = 0;
 
   onPageChanged(selectedPage: number) {
-    console.log("selectedPage", selectedPage);
     this.selectedPage = selectedPage;
     this.currentPage.emit(selectedPage);
   }

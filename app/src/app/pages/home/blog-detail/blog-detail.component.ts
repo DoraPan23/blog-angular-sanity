@@ -27,6 +27,8 @@ export class BlogDetailComponent implements OnInit {
 
   async getBlogBySlug(slug: string): Promise<Blog> {
     this.blog = await this.sanityService.getBlogBySlug(slug);
+    console.log("data", this.blog);
+
     return this.blog;
   }
 

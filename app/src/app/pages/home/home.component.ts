@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
     observable.subscribe((data) => {
       this.recentBlogs = data.slice(0, 4);
       this.allBlogs = data.slice(4);
-      console.log("data", this.recentBlogs);
 
       this.showBlogsByItemPerPage = this.allBlogs.slice(0, this.itemPerPaged);
       this.pageNumber = Math.ceil(this.allBlogs.length / this.itemPerPaged);

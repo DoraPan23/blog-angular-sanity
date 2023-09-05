@@ -1,11 +1,21 @@
-import { Component, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
 })
-export class NavbarComponent implements OnDestroy {
+export class NavbarComponent implements OnInit, OnDestroy {
   lightTheme: boolean = true;
+  links = ["blogs", "authors", "newsletter"];
+  menuSelected = "";
+  toggleHamburger = false;
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.menuSelected = window.location.pathname.split("/")[1] || "blogs";
+  }
   ngOnDestroy(): void {
     localStorage.clear();
   }
@@ -46,5 +56,11 @@ export class NavbarComponent implements OnDestroy {
         "#090d1f"
       );
     }
+  }
+
+  navigate(link: string) {
+    this.menuSelected = link;
+    this.toggleHamburger = false;
+    this.router.navigate(["/" + link]);
   }
 }

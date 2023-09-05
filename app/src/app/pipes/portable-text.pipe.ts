@@ -17,6 +17,10 @@ export class PortableTextToHTML implements PipeTransform {
       normal: ({ children }) =>
         "<span class='text-primary'>" + children + "</span>",
     },
+    list: {
+      bullet: ({ children }) =>
+        "<span class='text-primary'>" + children + "</span>",
+    },
   };
   transform(value: PortableTextBlock[]): string {
     return toHTML(value, { components: this.components });
