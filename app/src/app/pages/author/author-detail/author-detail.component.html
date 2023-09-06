@@ -1,8 +1,9 @@
 <div *ngIf="author" class="flex flex-col items-center justify-center gap-3">
     <div
-        class="flex flex-col items-center justify-center border border-orange-600 h-[350px] w-[350px] rounded-full text-primary">
-        <img class="h-[250px] w-[250px] rounded-full object-cover" [src]="author.image | sanityImage" alt="avatar">
-        <h3 class="font-inter text-[24px] font-semibold leading-7">{{author.author.name}}</h3>
+        class="relative flex flex-col items-center justify-center border border-orange-600 p-[40px] rounded-full text-primary">
+        <img class="h-[15rem] w-[15rem] rounded-full object-cover" [src]="author.image | sanityImage" alt="avatar">
+        <h3 class="absolute bottom-4 font-inter text-[24px] font-semibold leading-7">
+            {{author.author.name}}</h3>
     </div>
     <div>
         <app-all-blog [data]="listBlogsByAuthor" [tag]="author.author.name"></app-all-blog>
