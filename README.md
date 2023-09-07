@@ -54,3 +54,6 @@ The `/app` and `/studio` folders are meant to be deployed separately.
 Feel free to deploy the App to whichever hosting provider you prefer, like [Vercel](https://vercel.com/), [Netlify](https://netlify.com), or [Cloudflare Pages](https://pages.cloudflare.com).
 
 You can deploy the Sanity Studio by running `sanity deploy` in the `/studio` repository, provided you have the `sanity` package installed globally (`npm install --global sanity`). You can also run it with `npx sanity deploy` if you don't wish to install the CLI.
+
+Link demo UI: https://blog-angular-sanity.netlify.app/
+Link add data Sanity: https://dorapan.sanity.studio/desk
