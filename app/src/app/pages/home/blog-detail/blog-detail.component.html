@@ -1,18 +1,20 @@
-<div *ngIf="blog" class="flex flex-col items-center gap-8 px-80 mb-8 max-sm:px-5">
-  <a class="text-date self-start font-inter text-[14px] font-semibold leading-5 cursor-pointer"
-    (click)="navigateToAuthor(blog.author)">
-    {{blog.author.name + " • " + (blog.publishedAt | date: "fullDate")}}
-  </a>
-  <h3 class="font-inter text-[36px] text-primary font-bold leading-8">{{blog.title}}</h3>
-  <img *ngIf="blog.mainImage" [src]="blog.mainImage | sanityImage" alt="">
-  <div *ngIf="blog.body" class="flex flex-col" [innerHTML]="blog.body | portableTextToHTML"></div>
-  <div class="flex gap-2">
-    <ng-container *ngFor="let tag of blog.categories">
-      <div class="flex py-[2px] px-[10px] rounded bg-tag cursor-pointer" [routerLink]="['/tag', tag]">
-        <p class="text-date font-inter text-[14px] font-medium leading-5 hover:text-orange-500 ease-in duration-500">
-          {{tag}}</p>
-      </div>
-    </ng-container>
+<div *ngIf="blog" class="grid grid-cols-5 max-[450px]:grid-cols-1">
+  <div class="col-start-2 col-end-5 flex flex-col items-center gap-8 mb-8 max-sm:px-5">
+    <a class="text-date self-start font-inter text-[14px] font-semibold leading-5 cursor-pointer"
+      (click)="navigateToAuthor(blog.author)">
+      {{blog.author.name + " • " + (blog.publishedAt | date: "fullDate")}}
+    </a>
+    <h3 class="font-inter text-[36px] text-primary font-bold leading-8">{{blog.title}}</h3>
+    <img *ngIf="blog.mainImage" [src]="blog.mainImage | sanityImage" alt="">
+    <div *ngIf="blog.body" class="flex flex-col" [innerHTML]="blog.body | portableTextToHTML"></div>
+    <div class="flex gap-2">
+      <ng-container *ngFor="let tag of blog.categories">
+        <div class="flex py-[2px] px-[10px] rounded bg-tag cursor-pointer" [routerLink]="['/tag', tag]">
+          <p class="text-date font-inter text-[14px] font-medium leading-5 hover:text-orange-500 ease-in duration-500">
+            {{tag}}</p>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>
 <app-newsletter-card></app-newsletter-card>
