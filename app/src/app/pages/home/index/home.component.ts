@@ -1,6 +1,6 @@
-import { SanityService } from "../../services/sanity.service";
 import { Component, OnInit } from "@angular/core";
 import { from, skip, switchMap, take, tap, toArray } from "rxjs";
+import { SanityService } from "src/app/services/sanity.service";
 import { Blog } from "src/types";
 
 @Component({
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   itemPerPaged = 6;
   pageNumber = 0;
 
-  constructor(private sanityService: SanityService) {}
+  constructor(private sanityService: SanityService) { }
   async ngOnInit(): Promise<void> {
     // const posts: Post[] = await this.getAllPosts();
     // this.recentBlogs = posts.slice(0, 4);

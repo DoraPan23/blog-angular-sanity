@@ -5,7 +5,7 @@
             (click)="navigateToAuthor(blog.author)">
             {{blog.author.name + " • " + (blog.publishedAt | date: "fullDate")}}</a>
         <a class="text-primary font-inter text-[24px] font-semibold leading-8 mb-3 hover:text-orange-500 ease-in duration-500"
-            [routerLink]="['/blog', blog.slug]">
+            [routerLink]="['/blogs', blog.slug]">
             {{blog.title}}
         </a>
         <p class="font-inter text-[16px] font-normal leading-7 text-description mb-6">

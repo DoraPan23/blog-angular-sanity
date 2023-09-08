@@ -13,7 +13,7 @@ export class TagComponent implements OnInit {
   constructor(
     private sanityService: SanityService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   async ngOnInit(): Promise<void> {
     this.route.paramMap
