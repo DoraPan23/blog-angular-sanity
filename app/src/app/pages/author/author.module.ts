@@ -14,6 +14,5 @@ import { ComponentShareModule } from "src/app/components/component-share.module"
         ComponentShareModule
     ],
     declarations: [AuthorComponent, AuthorDetailComponent],
-    exports: [AuthorRoutingModule, CommonModule, PipeModule]
 })
 export class AuthorModule { }

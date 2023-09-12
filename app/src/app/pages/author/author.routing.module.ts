@@ -5,7 +5,7 @@ import { NgModule } from "@angular/core";
 
 const routes: Routes = [
     {
-        path: "authors", children: [
+        path: "", children: [
             { path: "", component: AuthorComponent },
             { path: ":slug", component: AuthorDetailComponent },
         ]

@@ -18,6 +18,5 @@ import { NewsletterComponent } from "../newsletter/index/newsletter.component";
     ],
     providers: [SanityService],
     declarations: [HomeComponent, BlogDetailComponent, RecentBlogComponent, NewsletterComponent],
-    exports: [BlogRoutingModule, CommonModule, PipeModule]
 })
 export class BlogModule { }

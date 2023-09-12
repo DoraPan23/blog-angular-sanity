@@ -15,6 +15,5 @@ import { TagComponent } from "./index/tag.component";
     ],
     providers: [SanityService],
     declarations: [TagComponent],
-    exports: [TagRoutingModule, CommonModule, PipeModule, ComponentShareModule]
 })
 export class TagModule { }

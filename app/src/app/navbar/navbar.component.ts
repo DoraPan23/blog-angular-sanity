@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   menuSelected = "";
   toggleHamburger = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.menuSelected = window.location.pathname.split("/")[1] || "blogs";
@@ -59,7 +59,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   navigate(link: string) {
-    this.menuSelected = link;
+    this.menuSelected = link != "" ? link : "blogs";
     this.toggleHamburger = false;
     this.router.navigate(["/" + link]);
   }
