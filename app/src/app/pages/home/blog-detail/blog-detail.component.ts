@@ -10,7 +10,6 @@ import { DataSharingService } from "src/app/services/data-sharing.service";
 })
 export class BlogDetailComponent implements OnInit {
   blog: Blog;
-  slug: string = "";
 
   constructor(
     private sanityService: SanityService,
@@ -18,11 +17,14 @@ export class BlogDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.slug = this.route.snapshot.params["slug"];
+
   }
 
   ngOnInit(): void {
-    this.getBlogBySlug(this.slug);
+    this.route.paramMap.subscribe(params => {
+      let slug = params.get("slug") || "";
+      this.getBlogBySlug(slug);
+    })
   }
 
   async getBlogBySlug(slug: string): Promise<Blog> {
@@ -35,6 +37,6 @@ export class BlogDetailComponent implements OnInit {
   navigateToAuthor(author: { name: string; _id: string }) {
     this.dataShare.updateData(author._id);
     localStorage.setItem("authorId", author._id);
-    this.router.navigate(["/author/" + author.name]);
+    this.router.navigate([author.name], { relativeTo: this.route });
   }
 }

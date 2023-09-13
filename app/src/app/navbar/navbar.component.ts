@@ -61,6 +61,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   navigate(link: string) {
     this.menuSelected = link != "" ? link : "blogs";
     this.toggleHamburger = false;
-    this.router.navigate(["/" + link]);
+    this.router.navigate(["/", link]);
   }
 }

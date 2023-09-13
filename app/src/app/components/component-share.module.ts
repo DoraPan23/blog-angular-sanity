@@ -7,11 +7,13 @@ import { CommonModule } from "@angular/common";
 import { PipeModule } from "../pipes/pipe.module";
 import { PagingComponent } from "./paging/paging.component";
 import { RouterModule } from "@angular/router";
+import { RecentBlogComponent } from "../pages/home/recent-blog/recent-blog.component";
 
 const components = [
     BlogCardComponent,
     AuthorCardComponent,
     NewsletterCardComponent,
+    RecentBlogComponent,
     AllBlogComponent,
     PagingComponent
 ]

@@ -10,7 +10,6 @@ const routes: Routes = [
             { path: ":slug", component: AuthorDetailComponent },
         ]
     },
-    { path: "author/:slug", component: AuthorDetailComponent, pathMatch: "full" },
 
 ];
 

@@ -23,15 +23,15 @@ export class BlogCardComponent {
     mainImage: "",
   };
 
-  constructor(private router: Router, private dataShare: DataSharingService) {}
+  constructor(private router: Router, private dataShare: DataSharingService) { }
 
   navigateToAuthor(author: { name: string; _id: string }) {
     this.dataShare.updateData(author._id);
     localStorage.setItem("authorId", author._id);
-    this.router.navigate(["/author/" + author.name]);
+    this.router.navigate(["/authors", author.name]);
   }
 
   navigateToTag(tag: string) {
-    this.router.navigate(["/tag/" + tag]);
+    this.router.navigate(["/tag", tag]);
   }
 }
