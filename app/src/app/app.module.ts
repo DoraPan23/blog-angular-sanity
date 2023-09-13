@@ -8,14 +8,24 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { BlogModule } from "./pages/home/blog.module";
 import { TagModule } from "./pages/tag/tag.module";
+import { LoginComponent } from "./pages/login/login.component";
+import { RegisterComponent } from "./pages/register/register.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, BlogModule, TagModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BlogModule,
+    TagModule,
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
