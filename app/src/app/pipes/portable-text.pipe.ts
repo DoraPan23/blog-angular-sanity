@@ -14,8 +14,27 @@ export class PortableTextToHTML implements PipeTransform {
         '<img src="' + this.sanityImagePipe.transform(value, 900) + '" />',
     },
     block: {
-      normal: ({ children }) =>
-        "<span class='text-primary'>" + children + "</span>",
+      h1: ({ children }) =>
+        "<h1 class='text-primary'>" + children + "</h1>",
+      h2: ({ children }) =>
+        "<h2 class='text-primary'>" + children + "</h2>",
+      h3: ({ children }) =>
+        "<h3 class='text-primary'>" + children + "</h3>",
+      h4: ({ children }) =>
+        "<h4 class='text-primary'>" + children + "</h4>",
+      normal: ({ isInline, index, renderNode, children, value }) => {
+        // console.log("isInline", isInline);
+        // console.log("index", index);
+        // console.log("renderNode", renderNode);
+        // console.log("children", children);
+        // console.log("value", value);
+        if(value.markDefs?.length !=0){
+          return "" + children
+        }
+        return "<span class='text-primary'>" + children + "</span>"
+      },
+      blockquote: ({children}) => 
+        "<span class='flex p-8 my-3 items-center gap-8 border rounded-xl border-l-4 border-solid border-[#E8E8EA]'>" + children + "</span>"
     },
     list: {
       bullet: ({ children }) =>

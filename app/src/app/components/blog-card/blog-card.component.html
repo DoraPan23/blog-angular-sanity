@@ -1,6 +1,6 @@
-<div *ngIf="blog" class="flex" [class]="first ? 'flex-col' : 'flex-row max-2xl:flex-col gap-6'">
-    <img *ngIf="blog.mainImage" [src]="blog.mainImage | sanityImage:width" alt="">
-    <div class="flex flex-col">
+<div *ngIf="blog" class="flex h-full" [class]="first ? 'flex-col' : 'flex-row max-2xl:flex-col gap-6'">
+    <img *ngIf="blog.mainImage" [src]="blog.mainImage | sanityImage:width" class="object-cover h-[240px] w-[384px]" alt="">
+    <div class="flex flex-col flex-1">
         <a class="text-date mb-3 cursor-pointer hover:text-orange-500 ease-in duration-500"
             (click)="navigateToAuthor(blog.author)">
             {{blog.author.name + " • " + (blog.publishedAt | date: "fullDate")}}</a>
@@ -11,7 +11,7 @@
         <p class="font-inter text-[16px] font-normal leading-7 text-description mb-6">
             {{blog.description}}
         </p>
-        <div class="flex gap-2 flex-wrap ">
+        <div class="flex gap-2 flex-wrap mt-auto">
             <ng-container *ngFor="let tag of blog.categories">
                 <div class="py-[2px] px-[10px] rounded bg-tag cursor-pointer">
                     <p class="text-date font-inter text-[14px] font-medium leading-5 hover:text-orange-500 ease-in duration-500"

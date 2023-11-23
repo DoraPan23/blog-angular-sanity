@@ -8,3 +8,11 @@
   --theme-color-selected: #090d1f;
   --theme-color-unselected: #fff;
 }
+
+a {
+  color: revert;
+}
+h1, h2, h3, h4 {
+  font-size: revert;
+  font-weight: revert;
+}
